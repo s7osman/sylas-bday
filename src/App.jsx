@@ -4,6 +4,7 @@ import Home from './Home';
 import RSVPForm from './RSVPForm';
 import ThankYou from './ThankYou';
 import Error from './Error';
+import GuestList from './GuestList';
 import './App.css';
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
         <Route path='/rsvp' element={<RSVPForm />} />
         <Route path='/thank-you' element={<ThankYou />} />
         <Route path='/error' element={<Error />} />
+        <Route path='/guest-list' element={<GuestList />} />
       </Routes>
     </Router>
   );
