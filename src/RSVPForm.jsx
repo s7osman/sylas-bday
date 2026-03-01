@@ -33,6 +33,9 @@ function RSVPForm() {
   return (
     <div className='rsvp-page'>
       <form className='rsvp-form' onSubmit={handleSubmit}>
+        <p className='back-btn' onClick={() => navigate('/')}>
+          ← Back to Invitation
+        </p>
         <h2>RSVP Form</h2>
         <div className='form-group'>
           <label>First Name:</label>
