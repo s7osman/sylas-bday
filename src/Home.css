@@ -1,66 +1,80 @@
 .container {
-        margin: 0;
-        padding: 0;
-        width: 100vw;
-}
-
-.centered-image{
-    width: 100%;       
-    height: auto;      
-    display: block;    
-    object-fit: cover; 
-    
-}
-
-.rsvp-btn-container {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .centered-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+  }
+  
+  .rsvp-btn-container {
     display: flex;
     justify-content: center;
-}
-.rsvp-btn-container button {
-    height: 4.5%;           
+    margin: 15px 0 0 0;
+    width: 100%;
+  }
+  
+  .rsvp-btn-container button {
     width: 70%;
-    border-radius: 2%;      
+    max-width: 300px;
     background-color: black;
     color: white;
-    font-size: 1.5rem;
-    margin-top: 5%;     
-}
-
-.arrival-note {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 0.8rem;     
+    font-size: 1.2rem;
+  }
+  
+  .arrival-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin: 20px 0;
+  }
+  
+  .arrival-note {
     color: red;
     font-weight: 700;
-    text-align: center;
-    margin: 3% 4% 2% 4%;         
-}
-
-.arrival-text {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 0.75rem;     
-    text-align: justify;
-    display: flex;
-    flex-direction: column;
-    margin: 1% 4%;        
-}
-
-.arrival-text span {
+    margin-bottom: 10px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    width: 60%;
+  }
+  
+  .arrival-text span,
+  .arrival-contact span {
     font-weight: 900;
-    text-align: center;
-    padding: 1%;           
-    margin-top: 5%;
-}
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .arrival-text,
+  .arrival-contact {
+    max-width: 600px;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 375px) { /* iPhone SE */
+    .rsvp-btn-container button {
+      width: 90%;
+      font-size: 1rem;
+      margin-top: 65px;
+    }
+    .arrival-text,
+    .arrival-contact {
+      font-size: 0.8rem;
+    }
+  }
 
-.arrival-contact {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 0.75rem;     
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    margin: 2% 4%;          
-}
-
-.arrival-contact span {
-    font-weight: 900;
-    margin-top: 10%;
-}
+  @media (min-width: 1200px) {
+    .container {
+        margin-bottom: 2%;
+    }
+    .centered-image {
+        max-width: 100%;  
+        max-height: 100%; 
+        object-fit: contain;
+      }
+  }
+  

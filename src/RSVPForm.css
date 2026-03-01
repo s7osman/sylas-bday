@@ -88,3 +88,10 @@
     cursor: pointer;
   }
   
+
+  @media (min-width: 1200px) {
+    .back-btn {
+        top: 7%;
+        left: 36%;
+      }
+  }
