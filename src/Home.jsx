@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Home.css';
-import inviImg from '../assets/invi-img.png';
+
 function Home() {
   const navigate = useNavigate();
 
@@ -12,7 +12,11 @@ function Home() {
   return (
     <>
       <div className='container'>
-        <img src={inviImg} alt='Invitation' className='centered-image'></img>
+        <img
+          src='/invi-img.png'
+          alt='Invitation'
+          className='centered-image'
+        ></img>
       </div>
       <div className='rsvp-btn-container'>
         <button onClick={handleClick}>RSVP Now</button>
