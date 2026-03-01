@@ -9,6 +9,10 @@ function Home() {
     navigate('/rsvp');
   };
 
+  const handleGuestListClick = () => {
+    navigate('/guest-list');
+  };
+
   return (
     <>
       <div className='container'>
@@ -37,6 +41,9 @@ function Home() {
           If you have any questions, please contact <br />
           <span>Lien: 647-869-6017 or Roshawn: 647-678-0772</span>
         </p>
+      </div>
+      <div className='guestlist-btn-container'>
+        <button onClick={handleGuestListClick}>View Guest List</button>
       </div>
     </>
   );
