@@ -1,9 +1,21 @@
+.container {
+        margin: 0;
+        padding: 0;
+        width: 100vw;
+}
+
+.centered-image{
+    width: 100%;       
+    height: auto;      
+    display: block;    
+    object-fit: cover; 
+    
+}
+
 .rsvp-btn-container {
     display: flex;
     justify-content: center;
-    align-items: center;
 }
-
 .rsvp-btn-container button {
     height: 4.5%;           
     width: 70%;
