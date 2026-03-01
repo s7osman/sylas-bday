@@ -7,9 +7,3 @@
 }
 
 /* Optional: control image size */
-.centered-image {
-  max-width: 100%;  
-  max-height: 100%; 
-  object-fit: contain;
-  border-bottom: red 15px dotted;
-}
