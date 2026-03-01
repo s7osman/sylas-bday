@@ -19,7 +19,7 @@ function Home() {
         ></img>
       </div>
       <div className='rsvp-btn-container'>
-        <button onClick={handleClick}>RSVP Now</button>
+        <button onClick={handleClick}>RSVP Now!</button>
       </div>
       <div className='arrival-container'>
         <p className='arrival-note'>
