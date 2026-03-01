@@ -11,17 +11,32 @@ function RSVPForm() {
   const [rsvp, setRSVP] = useState('');
   const [email, setEmail] = useState('');
   const [guestCount, setGuestCount] = useState(0);
+  const [guestNames, setGuestNames] = useState([]);
 
   const increaseGuest = () => {
     setGuestCount((prev) => prev + 1);
+    setGuestNames((prev) => [...prev, '']); // add empty input
   };
 
   const decreaseGuest = () => {
     setGuestCount((prev) => (prev > 0 ? prev - 1 : 0));
+    setGuestNames((prev) => prev.slice(0, -1)); // remove last input
+  };
+
+  const handleGuestNameChange = (index, value) => {
+    const newNames = [...guestNames];
+    newNames[index] = value;
+    setGuestNames(newNames);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // check if all guest names are filled
+    if (rsvp === 'yes' && guestNames.some((name) => name.trim() === '')) {
+      alert('Please enter all guest names');
+      return;
+    }
 
     try {
       await addDoc(collection(db, 'rsvps'), {
@@ -29,12 +44,13 @@ function RSVPForm() {
         last,
         email,
         rsvp,
-        guests: rsvp === 'yes' ? guestCount : 0,
+        guests: guestCount,
+        guestNames, // store array of names
         timestamp: new Date(),
       });
 
       console.log('RSVP saved!');
-      navigate('/thank-you');
+      navigate('/thank-you'); // Redirect
     } catch (error) {
       console.error('Error saving RSVP:', error);
     }
@@ -46,7 +62,6 @@ function RSVPForm() {
         <p className='back-btn' onClick={() => navigate('/')}>
           ← Back to Invitation
         </p>
-
         <h2>RSVP Form</h2>
 
         <div className='form-group'>
@@ -75,6 +90,7 @@ function RSVPForm() {
             type='email'
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            required
           />
         </div>
 
@@ -93,32 +109,30 @@ function RSVPForm() {
           </select>
         </div>
 
-        {/* 👇 Only show guest counter if attending */}
         {rsvp === 'yes' && (
-          <div className='guest-counter-section'>
-            <label className='guest-label'>
-              How many guests will you be bringing?
-            </label>
-
+          <div className='form-group'>
+            <label>How many guests will you be bringing?</label>
             <div className='guest-counter'>
-              <button
-                type='button'
-                className='counter-btn'
-                onClick={decreaseGuest}
-              >
-                −
+              <button type='button' onClick={decreaseGuest}>
+                -
               </button>
-
-              <span className='guest-number'>{guestCount}</span>
-
-              <button
-                type='button'
-                className='counter-btn'
-                onClick={increaseGuest}
-              >
+              <span>{guestCount}</span>
+              <button type='button' onClick={increaseGuest}>
                 +
               </button>
             </div>
+
+            {guestNames.map((name, idx) => (
+              <input
+                key={idx}
+                type='text'
+                placeholder={`Guest ${idx + 1} Name`}
+                value={name}
+                onChange={(e) => handleGuestNameChange(idx, e.target.value)}
+                required
+                style={{ marginTop: '5px' }}
+              />
+            ))}
           </div>
         )}
 
