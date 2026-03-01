@@ -1,0 +1,15 @@
+
+/* Make the container take the full viewport height */
+.container {
+  padding: 0;
+  height: 70vh;       
+  width: 100vw;              
+}
+
+/* Optional: control image size */
+.centered-image {
+  max-width: 100%;  
+  max-height: 100%; 
+  object-fit: contain;
+  border-bottom: red 15px dotted;
+}
