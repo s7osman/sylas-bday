@@ -34,7 +34,7 @@ function Home() {
           room.
         </p>
         <p className='arrival-contact'>
-          If you have any questions, please contact{' '}
+          If you have any questions, please contact <br />
           <span>Lien: 647-869-6017 or Roshawn: 647-678-0772</span>
         </p>
       </div>

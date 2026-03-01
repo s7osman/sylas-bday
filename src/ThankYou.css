@@ -1,24 +1,30 @@
 .thankyou-page {
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: white;
-    background-image: radial-gradient(black 15%, transparent 16%),
-                      radial-gradient(red 15%, transparent 16%),
-                      radial-gradient(yellow 15%, transparent 16%);
+    padding: 20px;
+    background-color: #fff;
+    background-image:
+      radial-gradient(black 15%, transparent 16%),
+      radial-gradient(red 15%, transparent 16%),
+      radial-gradient(yellow 15%, transparent 16%);
     background-size: 50px 50px;
     background-position: 0 0, 25px 25px, 12px 12px;
+    font-family: 'Comic Sans MS', 'Chalkboard SE', Arial, sans-serif;
+    flex-direction: column;
+    text-align: center;
   }
   
   .thankyou-card {
-    background: white;
-    padding: 50px 40px;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-    text-align: center;
-    width: 400px;
+    background: linear-gradient(135deg, #fff0f0, #ffffe0);
+    padding: 40px 30px;
+    border-radius: 25px;
+    box-shadow: 0 12px 25px rgba(0,0,0,0.35);
+    width: 90%;
+    max-width: 400px;
     animation: pop 0.5s ease-out;
+    border: 4px solid #ff0000;
   }
   
   @keyframes pop {
@@ -33,27 +39,71 @@
   }
   
   .thankyou-card h2 {
-    color: #333;
+    color: #ff0000;
+    font-size: 32px;
     margin-bottom: 15px;
+    text-shadow: 2px 2px #000;
   }
   
   .thankyou-card p {
     font-size: 18px;
-    color: #555;
+    color: #000;
+    margin-bottom: 20px;
   }
-
+  
   .home-button {
-    margin-top: 25px;
-    padding: 10px 25px;
-    background-color: black;
-    color: white;
-    border: none;
-    border-radius: 8px;
+    margin-top: 20px;
+    padding: 12px 30px;
+    background: linear-gradient(45deg, #ff0000, #ffdd00);
+    color: #000;
+    border: 3px solid #000;
+    border-radius: 15px;
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
     cursor: pointer;
-    font-size: 16px;
-    transition: 0.3s;
+    transition: transform 0.3s, box-shadow 0.3s;
   }
   
   .home-button:hover {
-    background-color: green; 
+    transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+  }
+  
+  @media (max-width: 480px) {
+    .thankyou-card {
+      padding: 30px 20px;
+    }
+  
+    .thankyou-card h2 {
+      font-size: 28px;
+    }
+  
+    .thankyou-card p {
+      font-size: 16px;
+    }
+  
+    .home-button {
+      font-size: 16px;
+      padding: 10px 25px;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .thankyou-card {
+      padding: 50px 40px;
+    }
+  
+    .thankyou-card h2 {
+      font-size: 36px;
+    }
+  
+    .thankyou-card p {
+      font-size: 20px;
+    }
+  
+    .home-button {
+      font-size: 20px;
+      padding: 12px 35px;
+    }
   }

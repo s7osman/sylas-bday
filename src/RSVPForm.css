@@ -1,97 +1,169 @@
 .rsvp-page {
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
-    align-items:flex-start;
-    padding: 50px 20px; 
-    background-color: white;
-    background-image: radial-gradient(black 15%, transparent 16%),
-                      radial-gradient(red 15%, transparent 16%),
-                      radial-gradient(yellow 15%, transparent 16%);
+    align-items: flex-start;
+    padding: 50px 20px 100px 20px; 
+    background-color: #fff;
+    background-image:
+      radial-gradient(black 15%, transparent 16%),
+      radial-gradient(red 15%, transparent 16%),
+      radial-gradient(yellow 15%, transparent 16%);
     background-size: 50px 50px;
     background-position: 0 0, 25px 25px, 12px 12px;
+    font-family: 'Comic Sans MS', 'Chalkboard SE', Arial, sans-serif;
+    position: relative;
   }
   
   .rsvp-form {
-    background: white;
-    padding: 40px;
-    border-radius: 15px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    background: linear-gradient(135deg, #fff0f0, #ffffe0);
+    padding: 40px 30px;
+    border-radius: 20px;
+    box-shadow: 0 12px 25px rgba(0,0,0,0.35);
     text-align: center;
-    width: 350px;
+    width: 90%;
+    max-width: 400px;
+    border: 4px solid #ff0000;
   }
   
   .rsvp-form h2 {
-    margin-bottom: 20px;
-    color: #333;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 30px;
+    margin-bottom: 25px;
+    color: #ff0000;
+    font-family: 'Comic Sans MS', 'Chalkboard SE', Arial, sans-serif;
+    font-size: 32px;
+    text-shadow: 2px 2px #000;
   }
   
   .form-group {
-    margin-bottom: 15px;
+    margin-bottom: 18px;
     text-align: left;
   }
   
   .form-group label {
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 6px;
     font-weight: bold;
     text-transform: uppercase;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     letter-spacing: 1px;
+    color: #000;
   }
   
-  .form-group input {
+  .form-group input,
+  .form-group select {
     width: 100%;
-    padding: 8px 10px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-  }
-  
-  .rsvp-page button {
-    margin-top: 10px;
-    padding: 10px 25px;
-    background-color: black; 
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 16px;
+    padding: 10px 12px;
+    border-radius: 12px;
+    border: 2px solid #000;
+    font-size: 14px;
+    outline: none;
     transition: 0.3s;
   }
   
-  .rsvp-page button:hover {
-    background-color: green;
+  .form-group input:focus,
+  .form-group select:focus {
+    border-color: #ff0000;
+    box-shadow: 0 0 10px rgba(255,0,0,0.5);
   }
-
-
-.form-group select {
-    width: 100%;
-    height: 50px;
-    padding: 8px 10px;
-    border-radius: 8px;
+  
+  .rsvp-page button.rsvp-btn {
+    margin-top: 15px;
+    padding: 12px 30px;
+    background: linear-gradient(45deg, #ff0000, #ffdd00);
+    color: #000;
+    border: 2px solid #000;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: transform 0.3s, box-shadow 0.3s;
   }
-
+  
+  .rsvp-page button.rsvp-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+  }
+  
   .back-btn {
     position: absolute;
-    color: red;
+    top: 5%;
+    left: 5%;
+    color: #ff0000;
     font-weight: 900;
     text-decoration: underline;
     text-transform: uppercase;
-    top: 5%;
-    left: 5%;
-    border: none;
+    border: 2px solid #ff0000;
     padding: 8px 12px;
-    border-radius: 6px;
+    border-radius: 8px;
     font-size: 14px;
     cursor: pointer;
+    background: #fff;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  
+  .back-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 12px rgba(0,0,0,0.4);
+  }
+  
+.rsvp-form,
+.rsvp-form input,
+.rsvp-form select,
+.rsvp-form textarea,
+.rsvp-form button {
+  box-sizing: border-box; 
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 2px solid #000;
+  font-size: 14px;
+  outline: none;
+  transition: 0.3s;
+}
+
+  @media (max-width: 480px) {
+    .rsvp-form {
+      padding: 30px 20px;
+    }
+  
+    .rsvp-form h2 {
+      font-size: 28px;
+    }
+  
+    .rsvp-page button.rsvp-btn {
+      font-size: 16px;
+      padding: 10px 25px;
+    }
+  
+    .form-group input,
+    .form-group select {
+      font-size: 13px;
+      padding: 8px 10px;
+    }
+  
+    .back-btn {
+      font-size: 12px;
+      padding: 6px 10px;
+    }
   }
   
 
-  @media (min-width: 1200px) {
-    .back-btn {
-        top: 7%;
-        left: 36%;
-      }
+  @media (min-width: 1024px) {
+    .rsvp-form {
+      padding: 50px 40px;
+    }
+  
+    .rsvp-form h2 {
+      font-size: 36px;
+    }
+  
+    .rsvp-page button.rsvp-btn {
+      font-size: 20px;
+    }
   }
