@@ -85,7 +85,21 @@ function GuestListPage() {
         <ul>
           {yesGuests.map((guest, idx) => (
             <li key={idx}>
-              {guest.first} {guest.last} + {guest.guests} guests
+              <strong>
+                {guest.first} {guest.last}
+              </strong>
+              {guest.guests > 0 && (
+                <>
+                  {' + '}
+                  {guest.guests} guest{guest.guests > 1 ? 's' : ''}:
+                  <ul className='guest-names'>
+                    {guest.guestNames &&
+                      guest.guestNames.map((name, i) => (
+                        <li key={i}>{name}</li>
+                      ))}
+                  </ul>
+                </>
+              )}
             </li>
           ))}
         </ul>

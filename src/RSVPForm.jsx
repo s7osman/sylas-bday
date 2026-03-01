@@ -90,7 +90,6 @@ function RSVPForm() {
             type='email'
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            required
           />
         </div>
 
