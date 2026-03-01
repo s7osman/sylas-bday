@@ -127,6 +127,61 @@
   transition: 0.3s;
 }
 
+.guest-counter-section {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  .guest-label {
+    display: block;
+    margin-bottom: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #000;
+    font-size: 14px;
+  }
+  
+  .guest-counter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+    margin-top: 5px;
+  }
+  
+  .counter-btn {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: 3px solid #000;
+    background: linear-gradient(45deg, #ff0000, #ffdd00);
+    color: #000;
+    font-size: 22px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  }
+  
+  .counter-btn:hover {
+    transform: scale(1.15) rotate(-5deg);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+  }
+  
+  .counter-btn:active {
+    transform: scale(0.95);
+  }
+  
+  .guest-number {
+    font-size: 22px;
+    font-weight: bold;
+    color: #ff0000;
+    min-width: 40px;
+    text-align: center;
+    text-shadow: 1px 1px #000;
+  }
+
   @media (max-width: 480px) {
     .rsvp-form {
       padding: 30px 20px;

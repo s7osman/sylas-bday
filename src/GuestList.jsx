@@ -10,6 +10,8 @@ function GuestListPage() {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [guests, setGuests] = useState([]);
+  const [totalGuest, setTotalGuest] = useState([]);
+  const [plus, setPlus] = useState([]);
   const [loading, setLoading] = useState(false);
 
   const handlePasswordSubmit = async (e) => {
@@ -65,17 +67,25 @@ function GuestListPage() {
   const yesGuests = guests.filter((g) => g.rsvp === 'yes');
   const noGuests = guests.filter((g) => g.rsvp === 'no');
 
+  const totalGuestCount =
+    yesGuests.length +
+    guests.reduce(
+      (total, guest) =>
+        typeof guest.guests === 'number' ? total + guest.guests : total,
+      0
+    );
+
   return (
     <div className='guestlist-page'>
       <h2>Guest List</h2>
-      <p className='total'>🎉 Total attending: {yesGuests.length}</p>
+      <p className='total'>🎉 Total attending: {totalGuestCount}</p>
 
       <div className='rsvp-section yes-section'>
         <h3>✅ Yes</h3>
         <ul>
           {yesGuests.map((guest, idx) => (
             <li key={idx}>
-              {guest.first} {guest.last} ({guest.email})
+              {guest.first} {guest.last} + {guest.guests} guests
             </li>
           ))}
         </ul>
@@ -86,7 +96,7 @@ function GuestListPage() {
         <ul>
           {noGuests.map((guest, idx) => (
             <li key={idx}>
-              {guest.first} {guest.last} ({guest.email})
+              {guest.first} {guest.last}
             </li>
           ))}
         </ul>

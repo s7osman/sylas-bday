@@ -10,6 +10,15 @@ function RSVPForm() {
   const [last, setLast] = useState('');
   const [rsvp, setRSVP] = useState('');
   const [email, setEmail] = useState('');
+  const [guestCount, setGuestCount] = useState(0);
+
+  const increaseGuest = () => {
+    setGuestCount((prev) => prev + 1);
+  };
+
+  const decreaseGuest = () => {
+    setGuestCount((prev) => (prev > 0 ? prev - 1 : 0));
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -20,11 +29,12 @@ function RSVPForm() {
         last,
         email,
         rsvp,
+        guests: rsvp === 'yes' ? guestCount : 0,
         timestamp: new Date(),
       });
 
       console.log('RSVP saved!');
-      navigate('/thank-you'); // Redirect
+      navigate('/thank-you');
     } catch (error) {
       console.error('Error saving RSVP:', error);
     }
@@ -36,7 +46,9 @@ function RSVPForm() {
         <p className='back-btn' onClick={() => navigate('/')}>
           ← Back to Invitation
         </p>
+
         <h2>RSVP Form</h2>
+
         <div className='form-group'>
           <label>First Name:</label>
           <input
@@ -46,6 +58,7 @@ function RSVPForm() {
             required
           />
         </div>
+
         <div className='form-group'>
           <label>Last Name:</label>
           <input
@@ -55,15 +68,16 @@ function RSVPForm() {
             required
           />
         </div>
+
         <div className='form-group'>
           <label>Email:</label>
           <input
             type='email'
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            required
           />
         </div>
+
         <div className='form-group'>
           <label>RSVP:</label>
           <select
@@ -78,6 +92,36 @@ function RSVPForm() {
             <option value='no'>No, I can't make it</option>
           </select>
         </div>
+
+        {/* 👇 Only show guest counter if attending */}
+        {rsvp === 'yes' && (
+          <div className='guest-counter-section'>
+            <label className='guest-label'>
+              How many guests will you be bringing?
+            </label>
+
+            <div className='guest-counter'>
+              <button
+                type='button'
+                className='counter-btn'
+                onClick={decreaseGuest}
+              >
+                −
+              </button>
+
+              <span className='guest-number'>{guestCount}</span>
+
+              <button
+                type='button'
+                className='counter-btn'
+                onClick={increaseGuest}
+              >
+                +
+              </button>
+            </div>
+          </div>
+        )}
+
         <button className='rsvp-btn' type='submit'>
           Submit
         </button>
