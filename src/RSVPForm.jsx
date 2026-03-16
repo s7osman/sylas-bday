@@ -1,144 +1,24 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './RSVPForm.css';
-import { collection, addDoc } from 'firebase/firestore';
-import { db } from './firebase';
 
 function RSVPForm() {
   const navigate = useNavigate();
-  const [first, setFirst] = useState('');
-  const [last, setLast] = useState('');
-  const [rsvp, setRSVP] = useState('');
-  const [email, setEmail] = useState('');
-  const [guestCount, setGuestCount] = useState(0);
-  const [guestNames, setGuestNames] = useState([]);
-
-  const increaseGuest = () => {
-    setGuestCount((prev) => prev + 1);
-    setGuestNames((prev) => [...prev, '']); // add empty input
-  };
-
-  const decreaseGuest = () => {
-    setGuestCount((prev) => (prev > 0 ? prev - 1 : 0));
-    setGuestNames((prev) => prev.slice(0, -1)); // remove last input
-  };
-
-  const handleGuestNameChange = (index, value) => {
-    const newNames = [...guestNames];
-    newNames[index] = value;
-    setGuestNames(newNames);
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    // check if all guest names are filled
-    if (rsvp === 'yes' && guestNames.some((name) => name.trim() === '')) {
-      alert('Please enter all guest names');
-      return;
-    }
-
-    try {
-      await addDoc(collection(db, 'rsvps'), {
-        first,
-        last,
-        email,
-        rsvp,
-        guests: guestCount,
-        guestNames, // store array of names
-        timestamp: new Date(),
-      });
-
-      console.log('RSVP saved!');
-      navigate('/thank-you'); // Redirect
-    } catch (error) {
-      console.error('Error saving RSVP:', error);
-    }
-  };
 
   return (
     <div className='rsvp-page'>
-      <form className='rsvp-form' onSubmit={handleSubmit}>
+      <div className='rsvp-closed-banner'>
         <p className='back-btn' onClick={() => navigate('/')}>
           ← Back to Invitation
         </p>
-        <h2>RSVP Form</h2>
 
-        <div className='form-group'>
-          <label>First Name:</label>
-          <input
-            type='text'
-            value={first}
-            onChange={(e) => setFirst(e.target.value)}
-            required
-          />
-        </div>
+        <h2>RSVP Closed</h2>
 
-        <div className='form-group'>
-          <label>Last Name:</label>
-          <input
-            type='text'
-            value={last}
-            onChange={(e) => setLast(e.target.value)}
-            required
-          />
-        </div>
-
-        <div className='form-group'>
-          <label>Email:</label>
-          <input
-            type='email'
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </div>
-
-        <div className='form-group'>
-          <label>RSVP:</label>
-          <select
-            value={rsvp}
-            onChange={(e) => setRSVP(e.target.value)}
-            required
-          >
-            <option value='' disabled>
-              Select
-            </option>
-            <option value='yes'>Yes, I'll be attending</option>
-            <option value='no'>No, I can't make it</option>
-          </select>
-        </div>
-
-        {rsvp === 'yes' && (
-          <div className='form-group'>
-            <label>How many guests will you be bringing?</label>
-            <div className='guest-counter'>
-              <button type='button' onClick={decreaseGuest}>
-                -
-              </button>
-              <span>{guestCount}</span>
-              <button type='button' onClick={increaseGuest}>
-                +
-              </button>
-            </div>
-
-            {guestNames.map((name, idx) => (
-              <input
-                key={idx}
-                type='text'
-                placeholder={`Guest ${idx + 1} Name`}
-                value={name}
-                onChange={(e) => handleGuestNameChange(idx, e.target.value)}
-                required
-                style={{ marginTop: '5px' }}
-              />
-            ))}
-          </div>
-        )}
-
-        <button className='rsvp-btn' type='submit'>
-          Submit
-        </button>
-      </form>
+        <p>
+          The RSVP deadline has passed and the form is now closed. Thank you to
+          everyone who responded.
+        </p>
+      </div>
     </div>
   );
 }
